@@ -1,5 +1,7 @@
 <?php
 
+require 'DatabaseProcess.php';
+
 $dbProcess = new DatabaseProcess();
 $dbProcess->initializeDatabaseForApplication();
 

@@ -1,40 +1,47 @@
 <?php
 
-public class DatabaseProcess {
-	$servername = "localhost:3306";
-	$username = "revw4882_Rinda";
-	$password = "d4xCtsNmjLZ65PG";
-	$dbname = "revw4882_Rinda_Introduction-to-Data-and-Information-Management";
-	$conn;
-	$isAlreadyInitialized = false;
+class DatabaseProcess {
+	private $servername;
+	private $username;
+	private $password;
+	private $dbname;
+	private $conn;
+	private $isAlreadyInitialized;
+
+	public function __construct() {
+		$this->servername = "localhost";
+		$this->username = "revw4882_Rinda";
+		$this->password = "d4xCtsNmjLZ65PG";
+		$this->dbname = "revw4882_Rinda_Introduction-to-Data-and-Information-Management";
+		$this->isAlreadyInitialized = false;
+	}
 
 	public function initializeDatabaseForApplication() {
-		guard (!$isAlreadyInitialized) else {
-			return;
+		if(!$this->isAlreadyInitialized) {
+			$this->createConnectionIfNeeded();
+			$this->isAlreadyInitialized = true;
 		}
-
-		createConnectionIfNeeded();
-
-		$isAlreadyInitialized = true;
 	}
 
 	function createConnectionIfNeeded() {
-		guard (!$conn) else {
-			return;
-		}
-
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		} else {
-			echo "Connection DB successfully";
-		}
+		if(!$this->conn) {
+        	$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+            // Check connection
+            if ($this->conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+                echo "Connection DB Error, " . $conn->connect_error;
+            } else {
+                echo "Connection DB successfully";
+            }
+        }
 	}
 
 	public function closeConnection() {
-		$conn->close();
+		$this->conn->close();
 	}
 }
+
+$dbProcess = new DatabaseProcess();
+$dbProcess->initializeDatabaseForApplication();
 
 ?>
