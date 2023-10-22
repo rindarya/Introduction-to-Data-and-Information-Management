@@ -50,6 +50,16 @@ class DatabaseProcess {
 		return $resultTable;
 	}
 
+	public function insertBarang($id, $name, $keterangan, $satuan) {
+		$resultQuery = mysqli_query($this->conn, "INSERT INTO Barang VALUES ($id, $name, $keterangan, $satuan, 1)");
+		
+		if ($this->conn->query($resultQuery) === TRUE) {
+		 	header("Refresh:0");
+		} else {
+		 	//echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+
 	public function closeConnection() {
 		$this->conn->close();
 	}
