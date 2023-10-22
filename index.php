@@ -1,12 +1,3 @@
-<?php
-
-require 'DatabaseProcess.php';
-
-$dbProcess = new DatabaseProcess();
-$dbProcess->initializeDatabaseForApplication();
-
-?>
-
 <HTML>
 
 <HEAD>
@@ -15,6 +6,15 @@ $dbProcess->initializeDatabaseForApplication();
 
 <BODY>
 	<H1>Introduction to Data and Information Management</H1>
+
+	<?php
+
+	require 'Barang.php';
+
+	$barangFetcher = new Barang();
+	$barangFetcher->fetch();
+
+	?>
 </BODY>
 
 </HTML>

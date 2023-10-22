@@ -30,18 +30,29 @@ class DatabaseProcess {
             if ($this->conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
                 echo "Connection DB Error, " . $conn->connect_error;
+                echo "<BR><BR>";
             } else {
                 echo "Connection DB successfully";
+                echo "<BR><BR>";
             }
         }
+	}
+
+	public function fetchBarang() {
+		$resultQuery = mysqli_query($this->conn, "SELECT * FROM Barang");
+		$resultTable = "";
+		while ($resultData = mysqli_fetch_array($resultQuery, MYSQLI_ASSOC)) {
+			$resultTable .= "<tr><td>".$resultData['IdBarang']."</td><td>".$resultData['NamaBarang']."</td><td>".$resultData['Keterangan']."</td><td>".$resultData['Satuan']."</td><td>".$resultData['IdPengguna']."</td></tr>";
+		}
+
+		print($resultTable);
+
+		return $resultTable;
 	}
 
 	public function closeConnection() {
 		$this->conn->close();
 	}
 }
-
-$dbProcess = new DatabaseProcess();
-$dbProcess->initializeDatabaseForApplication();
 
 ?>
