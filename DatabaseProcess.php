@@ -42,7 +42,7 @@ class DatabaseProcess {
 		$resultQuery = mysqli_query($this->conn, "SELECT * FROM Barang");
 		$resultTable = "";
 		while ($resultData = mysqli_fetch_array($resultQuery, MYSQLI_ASSOC)) {
-			$resultTable .= "<tr><td>".$resultData['IdBarang']."</td><td>".$resultData['NamaBarang']."</td><td>".$resultData['Keterangan']."</td><td>".$resultData['Satuan']."</td><td>".$resultData['IdPengguna']."</td></tr>";
+			$resultTable .= "<TR><TD>".$resultData['IdBarang']."</TD><TD>".$resultData['NamaBarang']."</TD><TD>".$resultData['Keterangan']."</TD><TD>".$resultData['Satuan']."</TD><TD>".$resultData['IdPengguna']."</TD><TD><button type=\"button\">EDIT</button> <button type=\"button\">HAPUS</button></TD></TR>";
 		}
 
 		print($resultTable);

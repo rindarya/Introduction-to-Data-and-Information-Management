@@ -12,10 +12,11 @@ class Barang extends Fetcher {
 
 	public function fetch() {
 
-		echo "<table border='1'>";
-		echo "<tr><td>IdBarang</td><td>NamaBarang</td><td>Keterangan</td><td>Satuan</td><td>IdPengguna</td></tr>";
+		echo "<TABLE BORDER='1'>";
+		echo "<TR><TD>IdBarang</TD><TD>NamaBarang</TD><TD>Keterangan</TD><TD>Satuan</TD><TD>IdPengguna</TD><TD>Operation</TD></TR>";
 		echo $this->dbProcess->fetchBarang();
-		echo "</table>";
+		echo "<TR><TD><input type=\"text\" id=\"fname\" name=\"fname\"></TD><TD><input type=\"text\" id=\"fname\" name=\"fname\"></TD><TD><input type=\"text\" id=\"fname\" name=\"fname\"></TD><TD><input type=\"text\" id=\"fname\" name=\"fname\"></TD><TD>1</TD><TD><button type=\"button\">TAMBAH</button></TD></TR>";
+		echo "</TABLE>";
 	}
 }
 
