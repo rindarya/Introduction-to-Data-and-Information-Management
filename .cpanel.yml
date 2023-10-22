@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/example/public_html/Introduction-to-Data-and-Information-Management
+    - /bin/cp -R images $DEPLOYPATH
